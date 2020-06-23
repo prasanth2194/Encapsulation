@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.EmployeeDAO;
+import dao.StudentDAO;
 import model.Employee;
 import model.Student;
 import valueobject.EmployeeStudentResponseVO;
@@ -12,6 +13,7 @@ public class EmployeeService {
 	StudentService stuServ = new StudentService();
 
     EmployeeDAO empDao = new EmployeeDAO();
+    StudentDAO stuDao=new StudentDAO();
 
     public List<EmployeeStudentResponseVO> getEmployeeStudents() {
         List<Employee> employeesWhoAreStudents = empDao.getEmployeeStudents();
@@ -36,7 +38,7 @@ public class EmployeeService {
     public EmployeeStudentResponseVO getEmployeeStudentById(Integer empId) {
     	EmployeeStudentResponseVO empst = new EmployeeStudentResponseVO();
     	Employee em=empDao.getEmployeeById(empId);
-    	Student st=stuServ.getStudentByStudentId(empId);
+    	Student st=stuDao.getStudentById(empId);
     	empst.emp=em;
     	empst.stu=st;
 		return empst;
