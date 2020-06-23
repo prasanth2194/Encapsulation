@@ -38,7 +38,7 @@ public class EmployeeService {
     public EmployeeStudentResponseVO getEmployeeStudentById(Integer empId) {
     	EmployeeStudentResponseVO empst = new EmployeeStudentResponseVO();
     	Employee em=empDao.getEmployeeById(empId);
-    	Student st=stuDao.getStudentById(empId);
+    	Student st=stuDao.getStudentById(em.sid);
     	empst.emp=em;
     	empst.stu=st;
 		return empst;
